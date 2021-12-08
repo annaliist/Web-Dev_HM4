@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+</head>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+
+    <div class="about">
+        <h1>MEET OUR TEAM</h1>
+    
+        <div class="images">
+          <div class="1">
+            <img src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1634470959334x344549157881977700%2Fastrid%2520logo%25203.png" alt="astrid">
+            <h2>Astrid Laupmaa</h2>
+            <h3>CEO</h3>
+          </div>
+          <div class="2">
+            <img src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1634324983977x737690516889801900%2Flarisa%2520logo.png" alt="larissa">
+            <h2>Larissa Pelke</h2>
+            <h3>CMO</h3>
+          </div>
+          <div class="3">
+            <img src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1634324926307x709624302597826600%2Fkarola%2520logo.png" alt="karola">
+            <h2>Karola Reinholm</h2>
+            <h3>CTO</h3>
+          </div>
+        </div>
+    
+        <h1>WHAT DO WE DO?</h1>
+        <div class="text">
+          <h2>We have created Kanvas.AI to bring together art lovers and artists. In one way or another, our team members are connected with art and technology - this mutual passion holds us together. Our mission is to make the process of selling art easy and transparent with the help of technology. We are inviting galleries and art collectors to enjoy the current and future solutions offered on our platform.</h2>
+        </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
+
+<style scoped>
+    h1 {
+    padding: 100px 0px 0px 0px;
+    font-size: 50px;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+  }
+  h3 {
+    text-align: center;
+  }
+  
+  .about {
+    background-color: #EFEFEF;
+  }
+  .images {
+    display: flex;
+    justify-content: center;
+  }
+  .images img {
+    width: 400px;
+    height: auto;
+  }
+  .text {
+    padding-bottom: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+  }
+</style>

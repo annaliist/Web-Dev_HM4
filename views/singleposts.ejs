@@ -1,0 +1,175 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Single Post</title>
+</head>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+
+        <div class="posts">
+            <div class="image-box">
+                <!-- divMain -->
+
+                <div class="top">
+                    <!-- divTop -->
+                    <div class="author">
+                        <img src="<%= posts.authorImage %>" alt="">
+                        <div class='<h3 class="comment">'>
+                            <%= posts.author %>
+                        </div>
+                    </div>
+                    <div class="date">
+                        <%= posts.date %>
+                    </div>
+                </div>
+
+                <div class="image">
+                    <!-- divImage -->
+                    <div class="image">
+                        <div class='img'> <img src="<%= posts.image %>" alt=""> </div>
+                        <div class="comment">
+                            <%= posts.body %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom">
+                    <div id="like">
+                        <button v-on:click="like"> Like </button>
+                        <%= posts.likes %>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="delete" data-del="<%= posts.id %>">Delete</a>
+        </div>
+
+
+        <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
+
+<script>
+    const delreq = document.querySelector('a.delete');
+    delreq.addEventListener('click', (e) => {
+        const endpoint = `/posts/${delreq.dataset.del}`;
+
+        fetch(endpoint, {
+            method: 'DELETE',
+        }).then(window.location.href = '/')
+    });
+</script>
+
+<style scoped>
+    .posts {
+        display: block;
+    }
+
+    .posts {
+        background-color: white;
+        padding-top: 20px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .item {
+        margin-bottom: 5px;
+        padding: 3px 5px;
+    }
+
+    .image-box {
+        width: 80%;
+        font-family: Georgia;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px;
+        margin: auto;
+        margin-bottom: 50px;
+        box-shadow: -1px 1px 5px 9px gainsboro;
+    }
+
+    .top {
+        display: flex;
+        height: 40px;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .author {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2c3e50;
+        font-size: 16px;
+    }
+
+    .author img {
+        height: 30px;
+        width: 30px;
+        padding-right: 10px;
+        border-radius: 50%;
+    }
+
+    .date {
+        color: #2c3e50;
+        font-size: 16px;
+    }
+
+    .comment {
+        color: #2c3e50;
+        font-size: 18px;
+    }
+
+    /* descendant selector */
+    div img {
+        display: block;
+        max-width: 100%;
+        max-height: 600px;
+        width: auto;
+        height: auto;
+        margin: auto;
+    }
+
+    .image div {
+        padding: 0px 10px 10px 10px;
+    }
+
+    .img img {
+        padding-bottom: 10px;
+    }
+
+    .image-box p {
+        margin: 20px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .bottom {
+        padding: 0px 0px 10px 20px;
+    }
+
+    /* adjacent sibling selector */
+    h3 {
+        color: darkgrey;
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+</style>

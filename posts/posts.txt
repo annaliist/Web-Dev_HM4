@@ -1,0 +1,32 @@
+database name: postgres
+table name: posts
+make sure to put in the public folder!
+
+user: postgres
+password: postgres
+database: postgres
+host: localhost
+port: 5432
+
+
+
+create table publicposts (
+    id            int           not null constraint posts3_pk primary key,
+    likes         int default 0 not null,
+    author        varchar       not null,
+    date          varchar       not null,
+    image         varchar,
+    "authorImage" varchar       not null,
+    body          varchar       not null
+);
+
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (1,0,'Heleliis Hõim','September 10, 2021 9:14','https://s3.amazonaws.com/appforest_uf/f1634322793489x977521909064446500/hoim3.jpg','https://s3.amazonaws.com/appforest_uf/f1630817676815x305382981342536200/heleliis.jpeg','My new exhibition is up @Palo Alto, read about it here: kanvas.ai/heleliis-hoim');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (2,0,'Pedro Pablo Ramírez Huerta','September 19, 2021 16:23','https://s3.amazonaws.com/appforest_uf/f1634065064732x833241585880476000/IMG_5318.jpg','https://s3.amazonaws.com/appforest_uf/f1634136787650x956409384232855600/Pedro.png','My first exhibition in Estonia. Go have a look! :)');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (3,0,'Taavi Tulev','September 24, 2021 22:54','https://s3.amazonaws.com/appforest_uf/f1634125405124x214129227983769660/TaaviTulev_Kollasega_30x30cm.png','https://s3.amazonaws.com/appforest_uf/f1634136819907x176553549074317100/taavi.png','Feeling dizzy?');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (4,0,'Nele Klaas','October 1, 2021 18:04',NULL,'https://s3.amazonaws.com/appforest_uf/f1633805520194x996063221501548200/DSCF9031.JPG','Looking for different colored acrylic paint, HMU!');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (5,0,'Anu Muiste','October 3, 2021 12:12','https://s3.amazonaws.com/appforest_uf/f1630910373601x612557356024048800/360kraadi_110x100.jpg','https://s3.amazonaws.com/appforest_uf/f1630915769702x590430321059811200/Anu%20Musite.jpeg','Painting ''360 degrees'', 2021.');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (6,0,'Evelin Zolotko','October 7, 2021 19:47','https://s3.amazonaws.com/appforest_uf/f1633345419602x438426479982952700/A69723C3-885C-45A2-A4CB-BB0567ABE108_1_105_c.jpeg','https://s3.amazonaws.com/appforest_uf/f1631115268304x990804007312452200/IMG_20210824_160513.jpg','I curated my first exhibition this month, thanks for all the support and come check it out @Telliskivi.');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (7,0,'Lukas John','October 7, 2021 12:08','https://s3.amazonaws.com/appforest_uf/f1632236597014x439282909383711400/Photo%2021.09.2021%2C%2016%2035%2033.jpg','https://s3.amazonaws.com/appforest_uf/f1632235268731x101062805605621540/Photo%2001.10.2020%2C%2021%2059%2045.jpg','First AND LAST attempt with oil pastels lol.');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (8,0,'Allan Roosileht','October 12, 2021 18:17','https://s3.amazonaws.com/appforest_uf/f1625078055440x701968911409408800/Vinu%CC%88u%CC%88l%20ja%20akru%CC%88u%CC%88l.%20II.jpg','https://s3.amazonaws.com/appforest_uf/f1625173513438x703655536748438000/206889359_867275010807042_5004943300384913687_n.jpg','Personal exhibition ''Vinyl and Acryl'' is up at the Solaris gallery.');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (9,0,'Sandra Sirp','October 18, 2021 16:30','https://s3.amazonaws.com/appforest_uf/f1626547943014x341776883991764100/SIX_2020_After%20void.png','https://s3.amazonaws.com/appforest_uf/f1630222602991x342189816716947460/Sandra%20Sirp_portree_2021.jpg','Felt dark today...');
+INSERT INTO posts(id,likes,author,date,image,"authorImage",body) VALUES (10,0,'Paul Kormashov','October 20, 2021 11:57','https://s3.amazonaws.com/appforest_uf/f1629574628953x709212587583159400/First%20Light%20120%20x%20100.JPG','https://s3.amazonaws.com/appforest_uf/f1629576453209x667812219843980400/Paul.jpg','''First Light'' was just sold for 50 000 euros. Dream big!')
