@@ -11,7 +11,7 @@
 <body>
     <%- include('./partials/header.ejs') %>
 
-        <div class="posts list">
+        <div class="postslist">
             <% if (posts.length> 0) { %>
                 <% posts.forEach(post=> { %>
 
@@ -23,7 +23,7 @@
                                 <div class="top">
                                     <!-- divTop -->
                                     <div class="author">
-                                        <img src="<%= post.authorImage %>" alt="">
+                                        <img src="<%= post.profile %>" alt="">
                                         <div class='<h3 class="comment">'>
                                             <%= post.author %>
                                         </div>
@@ -45,8 +45,13 @@
 
                                 <div class="bottom">
                                     <div id="like">
-                                        <button v-on:click="like"> Like </button>
-                                        <%= post.likes %>
+                                        <table>
+                                            <tr>
+                                            <td><button onclick="increaseLike()">Like</button></td>
+                                            <td><p id="counter-label"><%= post.likes %></p>
+                                                <script src="/script.js"></script>                                          </p></td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
 
@@ -67,16 +72,16 @@
 </html>
 
 <style scoped>
+    .postslist {
+        background-color: #efefef;
+    }
+
     .posts {
         background-color: white;
         padding-top: 20px;
         max-width: 900px;
         margin: auto;
-    }
-
-    .item {
-        margin-bottom: 5px;
-        padding: 3px 5px;
+        padding-bottom: 50px;
     }
 
     .image-box {
