@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('./database');
 const cors = require('cors');
+const { max } = require('lodash');
 
 const app = express();
 
@@ -80,16 +81,26 @@ app.delete('/posts/:id', async(req, res) => {
 });
 
 app.post('/create', async(req, res) => {
- try {
- const post = req.body;
- console.log(post);
- const newpost = await pool.query(
- "INSERT INTO posts(author, body, date, image, authorImage) values ($1, $2, $3) RETURNING*", [post.author, post.body, post.date, post.image, post.authorImage]
- );
- res.redirect('/');
- } catch (err) {
- console.error(err.message)
- }
+    try {
+    console.log("a post request has arrived");
+    const post = req.body;
+
+    const newpost = await pool.query(
+    "INSERT INTO posts(id, author, body, date, image, authorImage) values (DEFAULT, $1, $2, $3, $4, $5, $6) RETURNING*", [post.author, post.body, post.date, post.image, post.authorImage]
+    );
+    res.json( newpost );
+    res.redirect('posts');
+} catch (err) {
+    console.error(err.message)
+    }
+   });
+   
+   app.post('/posts/:id', (req, res, next) => {
+    const action = req.body.action;
+    const counter = action == 'Like' ? 1 : 0;
+    posts.update({_id: req.params.id}, {$inc: {likes: counter}}, {}, (err, numberAffected) => {
+        res.send('');
+    });
 });
 
 app.get('/create', (req, res) => {
