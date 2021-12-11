@@ -45,8 +45,13 @@
 
                                 <div class="bottom">
                                     <div id="like">
-                                        <button v-on:click="like"> Like </button>
-                                        <%= post.likes %>
+                                        <table>
+                                            <tr>
+                                            <td><button onclick="increaseLike()">Like</button></td>
+                                            <td><p id="counter-label">0</p>
+                                                <script src="/script.js"></script>                                          </p></td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
 
