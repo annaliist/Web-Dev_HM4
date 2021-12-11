@@ -86,8 +86,10 @@ app.post('/create', async(req, res) => {
     console.log("a post request has arrived");
     const post = req.body;
 
+    const newID = await pool.query("Select id from posts order by id desc limit 1");
+
     const newpost = await pool.query(
-    "INSERT INTO posts(id, author, body, date, image, authorImage) values (DEFAULT, $1, $2, $3, $4, $5, $6) RETURNING*", [post.author, post.body, post.date, post.image, post.authorImage]
+    "INSERT INTO posts(id, author, body, date, image, profile) values ($1, $2, $3, $4, $5, $6) RETURNING*", [newID, post.author, post.body, post.date, post.image, post.profile]
     );
     res.json( newpost );
     res.redirect('posts');
