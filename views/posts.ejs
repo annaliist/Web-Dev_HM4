@@ -61,7 +61,7 @@
                             <% } %>
         </div>
 
-    <%- include('./partials/footer.ejs') %>
+        <%- include('./partials/footer.ejs') %>
 </body>
 
 </html>
@@ -123,22 +123,18 @@
         font-size: 18px;
     }
 
-    /* descendant selector */
-    div img {
+    .image div {
+        padding: 0px 10px 10px 10px;
+    }
+
+    .image img {
         display: block;
+        padding-bottom: 10px;
         max-width: 100%;
         max-height: 600px;
         width: auto;
         height: auto;
         margin: auto;
-    }
-
-    .image div {
-        padding: 0px 10px 10px 10px;
-    }
-
-    .img img {
-        padding-bottom: 10px;
     }
 
     .image-box p {

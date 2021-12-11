@@ -10,44 +10,48 @@
 
 <body>
     <%- include('./partials/header.ejs') %>
+        <div id="posts">
+            <div class="posts">
+                <div class="image-box">
+                    <!-- divMain -->
 
-        <div class="posts">
-            <div class="image-box">
-                <!-- divMain -->
-
-                <div class="top">
-                    <!-- divTop -->
-                    <div class="author">
-                        <img src="<%= posts.authorImage %>" alt="">
-                        <div class='<h3 class="comment">'>
-                            <%= posts.author %>
+                    <div class="top">
+                        <!-- divTop -->
+                        <div class="author">
+                            <img src="<%= posts.authorImage %>" alt="">
+                            <div class='<h3 class="comment">'>
+                                <%= posts.author %>
+                            </div>
+                        </div>
+                        <div class="date">
+                            <%= posts.date %>
                         </div>
                     </div>
-                    <div class="date">
-                        <%= posts.date %>
-                    </div>
-                </div>
 
-                <div class="image">
-                    <!-- divImage -->
                     <div class="image">
-                        <div class='img'> <img src="<%= posts.image %>" alt=""> </div>
-                        <div class="comment">
-                            <%= posts.body %>
+                        <!-- divImage -->
+                        <div class="image">
+                            <div class='img'> <img src="<%= posts.image %>" alt=""> </div>
+                            <div class="comment">
+                                <%= posts.body %>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="bottom">
-                    <div id="like">
-                        <button v-on:click="like"> Like </button>
-                        <%= posts.likes %>
+                    <div class="bottom">
+                        <div id="like">
+                            <button v-on:click="like"> Like </button>
+                            <%= posts.likes %>
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
 
-            <a class="delete" data-del="<%= posts.id %>">Delete</a>
+
+
+                <a class="delete" data-del="<%= posts.id %>">Delete</a>
+            </div>
         </div>
 
 
@@ -68,6 +72,10 @@
 </script>
 
 <style scoped>
+    #posts {
+        background-color: #efefef;
+    }
+
     .posts {
         display: block;
     }
@@ -89,10 +97,10 @@
         font-family: Georgia;
         font-weight: bold;
         font-size: 20px;
-        padding: 5px;
         margin: auto;
         margin-bottom: 50px;
         box-shadow: -1px 1px 5px 9px gainsboro;
+        padding: 5px;
     }
 
     .top {
@@ -128,22 +136,18 @@
         font-size: 18px;
     }
 
-    /* descendant selector */
-    div img {
+    .image div {
+        padding: 0px 10px 10px 10px;
+    }
+
+    .image img {
         display: block;
+        padding-bottom: 10px;
         max-width: 100%;
         max-height: 600px;
         width: auto;
         height: auto;
         margin: auto;
-    }
-
-    .image div {
-        padding: 0px 10px 10px 10px;
-    }
-
-    .img img {
-        padding-bottom: 10px;
     }
 
     .image-box p {
