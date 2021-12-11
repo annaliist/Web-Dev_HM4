@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('./database');
 const cors = require('cors');
+const { values } = require('lodash');
 
 const app = express();
 
@@ -91,6 +92,20 @@ app.post('/create', async(req, res) => {
  console.error(err.message)
  }
 });
+
+app.put('/singleposts/:id', async(req, res) => {
+    try {
+    const { id } = req.params;
+    const post = req.body;
+    console.log("update request has arrived");
+    const updatepost = await pool.query(
+    "UPDATE posts SET (likes) = ($4) WHERE id = $1", [post.likes]
+    );
+    res.redirect('posts');
+    } catch (err) {
+    console.error(err.message);
+    }
+   });
 
 app.get('/create', (req, res) => {
  res.render('create');
