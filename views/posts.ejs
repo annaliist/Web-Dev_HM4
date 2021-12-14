@@ -15,9 +15,11 @@
             <% if (posts.length> 0) { %>
                 <% posts.forEach(post=> { %>
 
-                    <a class="singlepost" href="/singlepost/<%= post.id %>">
-                        <div class="posts">
-                            <div class="image-box">
+
+                    <div class="posts">
+
+                        <div class="image-box">
+                            <a class="singlepost" href="/singlepost/<%= post.id %>">
                                 <!-- divMain -->
 
                                 <div class="top">
@@ -42,22 +44,19 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            </a>
+                            <div class="bottom">
                                 <div class="bottom">
                                     <div id="like">
-                                        <table>
-                                            <tr>
-                                            <td><button onclick="increaseLike()">Like</button></td>
-                                            <td><p id="counter-label"><%= post.likes %></p>
-                                                <script src="/script.js"></script>                                          </p></td>
-                                            </tr>
-                                        </table>
+                                        <a class="like" data-update="<%= post.id %>">Like</a>
+                                        <%= post.likes %>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
-                    </a>
+                    </div>
+
 
                     <% }) %>
 
@@ -71,17 +70,50 @@
 
 </html>
 
+<script>
+    const updatereq = document.querySelector('a.like');
+    updatereq.addEventListener('click', (e) => {
+        const endpoint = `/posts/${updatereq.dataset.update}`;
+
+        fetch(endpoint, {
+            method: 'PUT',
+        }).then(location.reload())
+    });
+</script>
+
 <style scoped>
+    .like {
+        background-color: rgb(238, 237, 237);
+        color: #2c3e50;
+        font-size: 20px;
+        padding: 5px;
+        margin: auto;
+    }
+
+    .like:hover {
+        color: black;
+        background-color: rgb(223, 221, 221);
+        cursor: pointer;
+    }
+
     .postslist {
         background-color: #efefef;
     }
 
+    .singlepost {
+        padding: 0px;
+    }
+
+    .image-box {
+        background-color: white;
+    }
+
     .posts {
         background-color: white;
-        padding-top: 20px;
+        padding-top: 30px;
         max-width: 900px;
         margin: auto;
-        padding-bottom: 50px;
+        padding-bottom: 30px;
     }
 
     .image-box {
@@ -91,7 +123,6 @@
         font-size: 20px;
         padding: 5px;
         margin: auto;
-        margin-bottom: 50px;
         box-shadow: -1px 1px 5px 9px gainsboro;
     }
 
@@ -107,7 +138,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #2c3e50;
+        color: black;
         font-size: 16px;
     }
 
@@ -119,12 +150,12 @@
     }
 
     .date {
-        color: #2c3e50;
+        color: black;
         font-size: 16px;
     }
 
     .comment {
-        color: #2c3e50;
+        color: black;
         font-size: 18px;
     }
 
@@ -134,7 +165,7 @@
 
     .image img {
         display: block;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
         max-width: 100%;
         max-height: 600px;
         width: auto;
@@ -149,7 +180,12 @@
     }
 
     .bottom {
-        padding: 0px 0px 10px 20px;
+        padding: 10px 0px 20px 10px;
+    }
+
+    #like {
+        padding: 0px;
+        margin: 0px;
     }
 
     /* adjacent sibling selector */
@@ -157,15 +193,5 @@
         color: darkgrey;
         font-size: 12px;
         padding-left: 5px;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
     }
 </style>

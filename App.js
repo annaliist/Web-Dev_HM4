@@ -32,7 +32,7 @@ app.get('/', async (req, res) => {
     try {
         console.log("get posts request has arrived");
         const posts = await pool.query(
-            "SELECT * FROM posts"
+            "SELECT * FROM posts order by id DESC"
         );
         res.render('posts', { posts: posts.rows });
     } catch (err) {
@@ -82,37 +82,37 @@ app.delete('/posts/:id', async (req, res) => {
     }
 });
 
-app.post('/posts', async(req, res) => {
+app.post('/posts', async (req, res) => {
     try {
-    console.log("a post request has arrived");
-    console.log(pool.query("select id from posts order by id desc limit 1"))
-    const post = req.body;
+        console.log("a create request has arrived");
+        const post = req.body;
 
-    const newpost = await pool.query(
-    "INSERT INTO posts(id, author, body, date, image, profile) values (20, $1, $2, $3, $4, $5) RETURNING*"
-    , [post.author, post.body, post.date, post.image, post.profile]
-    );
-    
-    res.redirect('/');
-    
-} catch (err) {
-    console.error(err.message)
-    }
-   });
+        const newpost = await pool.query(
+            "INSERT INTO posts(id, author, body, date, image, profile) values ((select id from posts order by id desc limit 1)+1, $1, $2, $3, $4, $5) RETURNING*"
+            , [post.author, post.body, post.date, post.image, post.profile]
+        );
 
-app.put('/singleposts/:id', async(req, res) => {
-    try {
-    const { id } = req.params;
-    const post = req.body;
-    console.log("update request has arrived");
-    const updatepost = await pool.query(
-    "UPDATE posts SET (likes) = ($4) WHERE id = $1", [post.likes]
-    );
-    res.redirect('posts');
+        res.redirect('/');
+
     } catch (err) {
-    console.error(err.message);
+        console.error(err.message)
     }
-   });
+});
+
+app.put('/posts/:id', async (req, res) => {
+    try {
+        console.log(req.params);
+        const { id } = req.params;
+        const post = req.body;
+        console.log("like a post request has arrived");
+        const updatepost = await pool.query(
+            "UPDATE posts SET likes = (select likes from posts where id = $1)+1 WHERE id = $1", [id]
+        );
+        res.redirect('posts');
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 app.get('/create', (req, res) => {
     res.render('create');
@@ -121,3 +121,7 @@ app.get('/create', (req, res) => {
 app.use((req, res) => {
     res.status(404).render('404');
 });
+
+/*
+"UPDATE posts SET likes = 300 WHERE id = $1", [id]
+*/

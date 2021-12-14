@@ -9,23 +9,26 @@
 
     <body>
         <%- include('./partials/header.ejs') %>
-        <h1>CREATE A POST</h1>
-
-        <div class="submit">
-            <br>
-            <div class="create-post">
-                <form action="/posts" method="POST">
-                    <input type="text" id="author" name="author" placeholder="Author" required><br><br>
-                    <input type="text" id="authorImage" name="authorImage" placeholder="Author Image URL" required><br><br>
-                    <input type="text" id="date" name="date" placeholder="Date" required><br><br>
-                    <input type="text" id="image" name="image" placeholder="Image URL"><br><br>
-                    <input type="text" id="body" name="body" placeholder="Body" required><br><br>
-                    <button type="submit">Submit</button>
-                </form>
+        <div class="create">
+            <h1>CREATE A POST</h1>
+    
+            <div class="submit">
+                <br>
+                <div class="create-post">
+                    <form action="/posts" method="POST">
+                        <input type="text" id="author" name="author" placeholder="Author" required><br><br>
+                        <input type="text" id="profile" name="profile" placeholder="Author Image URL" required><br><br>
+                        <input type="text" id="date" name="date" placeholder="Date" required><br><br>
+                        <input type="text" id="image" name="image" placeholder="Image URL"><br><br>
+                        <input type="text" id="body" name="body" placeholder="Body" required><br><br>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+    
+                <!--<img src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1622531233735x512153190912028100%2FVertical.jpg" alt="logo">-->
+    
             </div>
-
-            <!--<img src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1622531233735x512153190912028100%2FVertical.jpg" alt="logo">-->
-
+            
         </div>
 
         <%- include('./partials/footer.ejs') %>
@@ -34,9 +37,14 @@
 </html>
 
 <style scoped>
+    .create {
+        background-color: #EFEFEF;
+        padding-bottom: 20px;
+    }
+
     input {
-        width: 100%;
-        padding: 12px 40px;
+        width: 400px;
+        padding: 12px 10px;
         margin: 8px 0;
         box-sizing: border-box;
     }
